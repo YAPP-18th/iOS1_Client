@@ -47,3 +47,4 @@
 "Hero_Profile_BucketBook" = "버킷북";
 "Hero_Profile_Empty_Bucket" = "친구 상태일 경우 볼 수 있습니다.\nBuok을 보고 싶으시다면 친구 맺기를 해주세요!";
 "Hero_Friend_List_Title" = "친구 목록";
+"Hero_Edit_Bucket_Detail" = "수정하기";
