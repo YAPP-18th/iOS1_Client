@@ -7,6 +7,10 @@
 
 import HeroUI
 
+public protocol FriendListCollectionCellDelegate: AnyObject {
+	func changeFriendTypeToFriend(index: Int)
+}
+
 class FriendListCollectionCell: UICollectionViewCell {
     static let identifier = "FriendListCollectionCell"
     private let profileImageView = UIImageView()
@@ -15,6 +19,8 @@ class FriendListCollectionCell: UICollectionViewCell {
     private let friendButton = FriendButton()
 	
     private var topOfUserLabel: NSLayoutConstraint?
+	public var friendListIndex: Int = 0
+	public weak var delegate: FriendListCollectionCellDelegate?
 	
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,6 +54,15 @@ class FriendListCollectionCell: UICollectionViewCell {
         }
         
         userLabel.text = user.nickname ?? ""
+		
+		if user.friendStatus == 1 {
+			friendButton.friendType.value = .friend
+		} else if user.friendStatus == 2 {
+			friendButton.friendType.value = .request
+		} else {
+			friendButton.friendType.value = .none
+		}
+		friendButton.settingFriendButtonType(for: friendButton.friendType.value)
     }
 	
 	func setSearchUser(user: SearchUserModel) {
@@ -77,6 +92,7 @@ class FriendListCollectionCell: UICollectionViewCell {
 		} else {
 			friendButton.friendType.value = .none
 		}
+		friendButton.settingFriendButtonType(for: friendButton.friendType.value)
 	}
     
     @objc
@@ -84,6 +100,7 @@ class FriendListCollectionCell: UICollectionViewCell {
         // todo - 친구 취소 성공하면..
 		if friendButton.friendType.value == .none {
 			friendButton.settingFriendButtonType(for: .request)
+			delegate?.changeFriendTypeToFriend(index: friendListIndex)
 		} else if friendButton.friendType.value == .friend {
 			friendButton.settingFriendButtonType(for: .none)
 		} else {

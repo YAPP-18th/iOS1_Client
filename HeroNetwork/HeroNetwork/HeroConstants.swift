@@ -10,7 +10,8 @@ import Foundation
 public struct HeroConstants {
 //    public static let base = "http://13.125.236.11:8080/api/v2"
 //    public static let base = "http://3.36.226.192:8080/api/v2"
-    public static let base = "http://yapp-load-balancer-539026644.ap-northeast-2.elb.amazonaws.com/api/v2"
+//    public static let base = "http://yapp-load-balancer-539026644.ap-northeast-2.elb.amazonaws.com/api/v2"
+    public static let base = "https://www.buok.ml/api/v2"
 	
 	public static var token: String {
 		return "/token"
@@ -43,4 +44,8 @@ public struct HeroConstants {
 	public static var alarm: String {
 		return "/alarm"
 	}
+    
+    public static var friend: String {
+        return "/friend"
+    }
 }

@@ -17,7 +17,7 @@ class FriendListViewModel {
     }
     
     func getFriendList() {
-        UserAPIRequest.getFriendList(userId: userId, responseHandler: { [weak self] result in
+        FriendAPIRequest.getFriendList(userId: userId, responseHandler: { [weak self] result in
             switch result {
             case .success(let list):
                 if let slist = list {

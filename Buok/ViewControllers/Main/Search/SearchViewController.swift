@@ -247,6 +247,12 @@ final class SearchViewController: HeroBaseViewController {
     }
 }
 
+extension SearchViewController: FriendListCollectionCellDelegate {
+	func changeFriendTypeToFriend(index: Int) {
+		viewModel?.requestFriend(friendId: viewModel?.friendList.value[index].userId ?? 0)
+	}
+}
+
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let type = viewModel?.currentSearchType.value, let keyword = searchBar.text {
@@ -294,6 +300,8 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
 		
 		if let user = viewModel?.friendList.value[indexPath.row] {
 			cell.setSearchUser(user: user)
+			cell.delegate = self
+			cell.friendListIndex = indexPath.row
 		}
 		
 		return cell

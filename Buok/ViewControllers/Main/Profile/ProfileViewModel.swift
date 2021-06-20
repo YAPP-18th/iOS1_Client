@@ -71,6 +71,7 @@ class ProfileViewModel {
                 self.myUserData.value = myPageUserData
                 self.bookmarkCount.value = myPageUserData.bookmark.bookMarkCount
                 self.bookmarkData.value = myPageUserData.bookmark.bookmarkList ?? [BookmarkListData]()
+				self.userId = myPageUserData.user.id
             case .failure(let error):
                 ErrorLog("API Error : \(error.statusCode) / \(error.errorMessage) / \(error.localizedDescription)")
             }

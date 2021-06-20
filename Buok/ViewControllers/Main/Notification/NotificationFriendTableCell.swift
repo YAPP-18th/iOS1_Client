@@ -8,6 +8,11 @@
 
 import HeroUI
 
+public protocol NotificationCellDelegate: AnyObject {
+	func onClickAcceptButton(index: Int)
+	func onClickRejectButton(index: Int)
+}
+
 class NotificationFriendTableCell: UITableViewCell {
 	static let identifier = "NotificationFriendCollectionCell"
 	private let profileImageView = UIImageView()
@@ -42,7 +47,17 @@ class NotificationFriendTableCell: UITableViewCell {
 		$0.layer.cornerRadius = 8
 		return $0
 	}(UIButton())
+    private let buttonStackView: UIStackView = {
+        $0.alignment = .center
+        $0.axis = .horizontal
+        $0.spacing = 8
+        $0.distribution = .fillEqually
+        return $0
+    }(UIStackView())
 	
+	public var friendListIndex: Int = 0
+	public weak var delegate: NotificationCellDelegate?
+    
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		setupView()
@@ -59,6 +74,9 @@ class NotificationFriendTableCell: UITableViewCell {
 		profileImageView.contentMode = .scaleAspectFill
 		profileImageView.layer.cornerRadius = 28
 		profileImageView.clipsToBounds = true
+        
+        acceptButton.addTarget(self, action: #selector(onClickAccept(_:)), for: .touchUpInside)
+		rejectButton.addTarget(self, action: #selector(onClickReject(_:)), for: .touchUpInside)
 	}
 	
 	private func setupContentLayout() {
@@ -66,8 +84,9 @@ class NotificationFriendTableCell: UITableViewCell {
 		contentView.addSubview(bottomView)
 		mainContentView.addSubview(profileImageView)
 		mainContentView.addSubview(contentLabel)
-		mainContentView.addSubview(acceptButton)
-		mainContentView.addSubview(rejectButton)
+		mainContentView.addSubview(buttonStackView)
+        buttonStackView.addArrangedSubview(acceptButton)
+        buttonStackView.addArrangedSubview(rejectButton)
 		
 		mainContentView.snp.makeConstraints { make in
 			make.top.leading.trailing.equalToSuperview()
@@ -90,22 +109,24 @@ class NotificationFriendTableCell: UITableViewCell {
 			make.leading.equalTo(profileImageView.snp.trailing).offset(16)
 			make.trailing.equalTo(mainContentView.snp.trailing).inset(16)
 		}
+        
+        buttonStackView.snp.makeConstraints { make in
+            make.top.equalTo(contentLabel.snp.bottom).offset(7)
+            make.leading.equalTo(contentLabel.snp.leading)
+            make.trailing.equalTo(contentLabel.snp.trailing)
+            make.height.equalTo(32)
+        }
 		
 		acceptButton.snp.makeConstraints { make in
-			make.top.equalTo(contentLabel.snp.bottom).offset(7)
-			make.leading.equalTo(contentLabel.snp.leading)
-			make.bottom.equalTo(mainContentView.snp.bottom).inset(12)
-			make.width.equalTo(112)
-			make.height.equalTo(32)
+			make.top.equalTo(buttonStackView.snp.top)
+			make.leading.equalTo(buttonStackView.snp.leading)
+            make.centerY.equalTo(buttonStackView.snp.centerY)
 		}
 		
 		rejectButton.snp.makeConstraints { make in
-			make.top.equalTo(contentLabel.snp.bottom).offset(7)
-			make.leading.equalTo(acceptButton.snp.trailing).offset(8)
-			make.trailing.equalTo(contentLabel.snp.trailing)
-			make.bottom.equalTo(mainContentView.snp.bottom).inset(12)
-			make.width.equalTo(112)
-			make.height.equalTo(32)
+            make.top.equalTo(buttonStackView.snp.top)
+            make.trailing.equalTo(buttonStackView.snp.trailing)
+            make.centerY.equalTo(buttonStackView.snp.centerY)
 		}
 	}
 	
@@ -116,5 +137,15 @@ class NotificationFriendTableCell: UITableViewCell {
 		attributedStr.addAttribute(.font, value: UIFont.systemFont(ofSize: 15, weight: .bold), range: (text as NSString).range(of: nickname))
 		attributedStr.addAttribute(.foregroundColor, value: UIColor.heroGray5B, range: (text as NSString).range(of: nickname))
 		contentLabel.attributedText = attributedStr
+	}
+    
+    @objc
+    private func onClickAccept(_ sender: UIButton) {
+		delegate?.onClickAcceptButton(index: friendListIndex)
+    }
+	
+	@objc
+	private func onClickReject(_ sender: UIButton) {
+		delegate?.onClickRejectButton(index: friendListIndex)
 	}
 }

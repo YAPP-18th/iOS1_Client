@@ -26,6 +26,7 @@ final class NotificationViewController: HeroBaseViewController {
 	public override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		viewModel?.fetchNotificationList()
+		self.tableView.reloadData()
 	}
 	
 	func bindViewModel() {
@@ -94,11 +95,28 @@ final class NotificationViewController: HeroBaseViewController {
 		
 		tableView.register(NotificationTableCell.self, forCellReuseIdentifier: NotificationTableCell.identifier)
 		tableView.register(NotificationFriendTableCell.self, forCellReuseIdentifier: NotificationFriendTableCell.identifier)
+		tableView.register(NotificationFriendAcceptTableCell.self, forCellReuseIdentifier: NotificationFriendAcceptTableCell.identifier)
 	}
 	
 	@objc
 	private func onClickBackButton(_ sender: UIButton) {
 		self.dismiss(animated: true, completion: nil)
+	}
+}
+
+extension NotificationViewController: NotificationCellDelegate {
+	func onClickAcceptButton(index: Int) {
+		let friendId = viewModel?.notificationList.value[index].friendId ?? 0
+		let alarmId = viewModel?.notificationList.value[index].alarmId ?? 0
+		viewModel?.toMakeFriend(friendId: friendId, alarmId: alarmId, accept: true)
+		self.tableView.reloadData()
+	}
+	
+	func onClickRejectButton(index: Int) {
+		let friendId = viewModel?.notificationList.value[index].friendId ?? 0
+		let alarmId = viewModel?.notificationList.value[index].alarmId ?? 0
+		viewModel?.toMakeFriend(friendId: friendId, alarmId: alarmId, accept: false)
+		self.tableView.reloadData()
 	}
 }
 
@@ -122,12 +140,24 @@ extension NotificationViewController: UITableViewDataSource, UITableViewDelegate
 				return cell
 			}
 		} else {
-			if let cell = tableView.dequeueReusableCell(withIdentifier: NotificationFriendTableCell.identifier, for: indexPath) as? NotificationFriendTableCell {
-				
-				cell.applyAttributedNicknameText(nickname: String(describing: viewModel?.notificationList.value[indexPath.row].friendId))
-				cell.selectionStyle = .none
-				
-				return cell
+			if viewModel?.notificationList.value[indexPath.row].friendStatus == 2 {
+				if let cell = tableView.dequeueReusableCell(withIdentifier: NotificationFriendAcceptTableCell.identifier, for: indexPath) as? NotificationFriendAcceptTableCell {
+					
+					cell.applyAttributedTitleNicknameText(nickname: String(describing: viewModel?.notificationList.value[indexPath.row].friendId))
+					cell.applyAttributedContentNicknameText(nickname: String(describing: viewModel?.notificationList.value[indexPath.row].friendId))
+					cell.selectionStyle = .none
+					return cell
+				}
+			} else {
+				if let cell = tableView.dequeueReusableCell(withIdentifier: NotificationFriendTableCell.identifier, for: indexPath) as? NotificationFriendTableCell {
+					
+					cell.applyAttributedNicknameText(nickname: String(describing: viewModel?.notificationList.value[indexPath.row].friendId))
+					cell.selectionStyle = .none
+					cell.friendListIndex = indexPath.row
+					cell.delegate = self
+					
+					return cell
+				}
 			}
 		}
 		return UITableViewCell()
@@ -138,7 +168,11 @@ extension NotificationViewController: UITableViewDataSource, UITableViewDelegate
 		if viewModel?.notificationList.value[indexPath.row].alarmStatus == 1 {
 			height = 100
 		} else {
-			height = 115
+			if viewModel?.notificationList.value[indexPath.row].friendStatus == 1 {
+				height = 100
+			} else {
+				height = 115
+			}
 		}
 		return height
 	}
@@ -152,7 +186,7 @@ extension NotificationViewController: UITableViewDataSource, UITableViewDelegate
 			completion(true)
 		}
 		deleteAction.backgroundColor = .heroServiceSkin
-		deleteAction.image =  UIImage(heroSharedNamed: "ic_noti_delete")!
+		deleteAction.image = UIImage(heroSharedNamed: "ic_noti_delete")
 		
 		let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
 		return configuration

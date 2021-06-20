@@ -40,4 +40,15 @@ public class NotificationViewModel {
 			}
 		})
 	}
+    
+    func toMakeFriend(friendId: Int, alarmId: Int, accept: Bool) {
+        FriendAPIRequest.makingFriend(friendId: friendId, alarmId: alarmId, accept: accept, responseHandler: { result in
+            switch result {
+            case .success(let isSuccess):
+                DebugLog("To become Friend Success : \(isSuccess)")
+            case .failure(let error):
+                ErrorLog("ERROR: \(error.statusCode) / \(error.localizedDescription)")
+            }
+        })
+    }
 }

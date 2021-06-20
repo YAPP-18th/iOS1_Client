@@ -55,4 +55,15 @@ final class SearchViewModel {
             })
         }
     }
+	
+	func requestFriend(friendId: Int) {
+		FriendAPIRequest.requestFriend(friendId: friendId, responseHandler: { result in
+			switch result {
+			case .success(let isSuccess):
+				DebugLog("Accept Friend's Request Success : \(isSuccess)")
+			case .failure(let error):
+				ErrorLog("ERROR: \(error.statusCode) / \(error.localizedDescription)")
+			}
+		})
+	}
 }

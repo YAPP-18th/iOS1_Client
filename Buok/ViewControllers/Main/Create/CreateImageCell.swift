@@ -9,6 +9,7 @@ import Foundation
 import HeroCommon
 import HeroSharedAssets
 import HeroUI
+import Kingfisher
 
 public protocol CreateImageCellDelegate: AnyObject {
     func didSelectDeleteButton(index: Int)
@@ -27,6 +28,14 @@ public class CreateImageCell: UICollectionViewCell {
     public var itemImage: UIImage? {
         didSet {
             imageView.image = itemImage
+        }
+    }
+    
+    public var itemImageURL: String? {
+        didSet {
+            if let url = URL(string: itemImageURL ?? "") {
+                self.imageView.kf.setImage(with: url)
+            }
         }
     }
     

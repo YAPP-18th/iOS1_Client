@@ -92,7 +92,7 @@ extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         DebugLog("Firebase registration token: \(fcmToken ?? "nil")")
         if let token = fcmToken {
-			let _ = TokenManager.shared.setFCMToken(token: token)
+			_ = TokenManager.shared.setFCMToken(token: token)
             let dataDict: [String: String] = ["token": token]
             NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
         }

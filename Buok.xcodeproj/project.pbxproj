@@ -11,9 +11,11 @@
 		293857E1266BA66500E8DB65 /* AlarmAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293857E0266BA66500E8DB65 /* AlarmAPIRequest.swift */; };
 		293857F0266BE0A500E8DB65 /* NotificationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293857EF266BE0A500E8DB65 /* NotificationTableCell.swift */; };
 		293857FC266C7B5A00E8DB65 /* NotificationFriendTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293857FB266C7B5A00E8DB65 /* NotificationFriendTableCell.swift */; };
+		29385BEB267A4F5A00E8DB65 /* NotificationFriendAcceptTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29385BEA267A4F5A00E8DB65 /* NotificationFriendAcceptTableCell.swift */; };
 		29773EFB2647FAB900FB7AA8 /* LoginViewController+AppleID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29773EFA2647FAB900FB7AA8 /* LoginViewController+AppleID.swift */; };
 		298561AD2663F5C600830084 /* InfoCheckAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298561AC2663F5C600830084 /* InfoCheckAPIRequest.swift */; };
 		29CA50B5265AEE7B00533ED6 /* UserAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CA50B4265AEE7B00533ED6 /* UserAPIRequest.swift */; };
+		525A226E2679FD75008C1F2E /* FriendAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525A226D2679FD75008C1F2E /* FriendAPIRequest.swift */; };
 		528E6F27265BB53A00F9013D /* SignAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528E6F26265BB53A00F9013D /* SignAPIRequest.swift */; };
 		7A23F5D60945D5051A7AF8BA /* Pods_Buok_BuokUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19D64A49C31935ACEF072549 /* Pods_Buok_BuokUITests.framework */; };
 		B00FD521266B6FD700A48B72 /* WithDrawalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00FD520266B6FD700A48B72 /* WithDrawalViewController.swift */; };
@@ -93,6 +95,8 @@
 		B0B033D32622AA0900D65204 /* SettingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B033D22622AA0900D65204 /* SettingNavigator.swift */; };
 		B0B035E82622B2B900D65204 /* SettingSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B035E72622B2B900D65204 /* SettingSectionHeaderView.swift */; };
 		B0B035ED2622B33800D65204 /* SettingConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B035EC2622B33800D65204 /* SettingConstants.swift */; };
+		B0B1D7B8267CB0F20058CEBB /* EditBucketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B1D7B7267CB0F20058CEBB /* EditBucketViewController.swift */; };
+		B0B1D7BA267CB1080058CEBB /* EditBucketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B1D7B9267CB1080058CEBB /* EditBucketViewModel.swift */; };
 		B0D0217D2602199600F25329 /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D0217C2602199600F25329 /* JoinViewController.swift */; };
 		B0D0218226021A2100F25329 /* NadamProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D0218126021A2100F25329 /* NadamProperties.swift */; };
 		EE23DF74264EB2F500AB31D1 /* BuokmarkCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE23DF73264EB2F500AB31D1 /* BuokmarkCollectionCell.swift */; };
@@ -247,6 +251,7 @@
 		293857E0266BA66500E8DB65 /* AlarmAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAPIRequest.swift; sourceTree = "<group>"; };
 		293857EF266BE0A500E8DB65 /* NotificationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableCell.swift; sourceTree = "<group>"; };
 		293857FB266C7B5A00E8DB65 /* NotificationFriendTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFriendTableCell.swift; sourceTree = "<group>"; };
+		29385BEA267A4F5A00E8DB65 /* NotificationFriendAcceptTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationFriendAcceptTableCell.swift; sourceTree = "<group>"; };
 		29773EFA2647FAB900FB7AA8 /* LoginViewController+AppleID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "LoginViewController+AppleID.swift"; path = "Buok/ViewControllers/User/SignIn/LoginViewController+AppleID.swift"; sourceTree = SOURCE_ROOT; };
 		298561AC2663F5C600830084 /* InfoCheckAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCheckAPIRequest.swift; sourceTree = "<group>"; };
 		29CA50B4265AEE7B00533ED6 /* UserAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIRequest.swift; sourceTree = "<group>"; };
@@ -264,6 +269,7 @@
 		4BE414CD84DE5C96B36B278E /* Pods-YappHero.real.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YappHero.real.xcconfig"; path = "Target Support Files/Pods-YappHero/Pods-YappHero.real.xcconfig"; sourceTree = "<group>"; };
 		4ED130FF7235F27FE2025A97 /* Pods-BuokTests.inhouse(debug).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BuokTests.inhouse(debug).xcconfig"; path = "Target Support Files/Pods-BuokTests/Pods-BuokTests.inhouse(debug).xcconfig"; sourceTree = "<group>"; };
 		4F93D0621D7E53F338B6AD22 /* Pods-YappHeroTests.sandbox(debug).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YappHeroTests.sandbox(debug).xcconfig"; path = "Target Support Files/Pods-YappHeroTests/Pods-YappHeroTests.sandbox(debug).xcconfig"; sourceTree = "<group>"; };
+		525A226D2679FD75008C1F2E /* FriendAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAPIRequest.swift; sourceTree = "<group>"; };
 		528E6F26265BB53A00F9013D /* SignAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignAPIRequest.swift; sourceTree = "<group>"; };
 		54167ECDDAF71780B1B61453 /* Pods-Nadam-NadamUITests.inhouse(debug).xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nadam-NadamUITests.inhouse(debug).xcconfig"; path = "Target Support Files/Pods-Nadam-NadamUITests/Pods-Nadam-NadamUITests.inhouse(debug).xcconfig"; sourceTree = "<group>"; };
 		56DD4736D819295D6C88234C /* Pods-YappHero-YappHeroUITests.real.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YappHero-YappHeroUITests.real.xcconfig"; path = "Target Support Files/Pods-YappHero-YappHeroUITests/Pods-YappHero-YappHeroUITests.real.xcconfig"; sourceTree = "<group>"; };
@@ -366,6 +372,8 @@
 		B0B033D22622AA0900D65204 /* SettingNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNavigator.swift; sourceTree = "<group>"; };
 		B0B035E72622B2B900D65204 /* SettingSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSectionHeaderView.swift; sourceTree = "<group>"; };
 		B0B035EC2622B33800D65204 /* SettingConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingConstants.swift; sourceTree = "<group>"; };
+		B0B1D7B7267CB0F20058CEBB /* EditBucketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBucketViewController.swift; sourceTree = "<group>"; };
+		B0B1D7B9267CB1080058CEBB /* EditBucketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBucketViewModel.swift; sourceTree = "<group>"; };
 		B0D0217C2602199600F25329 /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		B0D0218126021A2100F25329 /* NadamProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NadamProperties.swift; sourceTree = "<group>"; };
 		B0D43A522600DA99003420CA /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -474,6 +482,14 @@
 				B07AD1382667C3A6000CCDAC /* EmailAuthAPIRequest.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		525A22642679FD46008C1F2E /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				525A226D2679FD75008C1F2E /* FriendAPIRequest.swift */,
+			);
+			path = Friend;
 			sourceTree = "<group>";
 		};
 		69EBCC9DA8CF7A7AC4E9B152 /* Frameworks */ = {
@@ -747,6 +763,7 @@
 		B06B5EE625ECCEB00045A491 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				B0B1D7AE267CB0E30058CEBB /* EditBucket */,
 				B07CD19A266675140031B106 /* Notification */,
 				B07CD1912666750F0031B106 /* Search */,
 				B01D439E26039D1C00F2D28C /* Detail */,
@@ -783,6 +800,7 @@
 			isa = PBXGroup;
 			children = (
 				293857D7266BA64100E8DB65 /* Alarm  */,
+				525A22642679FD46008C1F2E /* Friend */,
 				B023B14C266A13030060F625 /* Image */,
 				B07CD1A3266676670031B106 /* Search */,
 				B01A28B62665057300BE9DB3 /* Token */,
@@ -839,6 +857,7 @@
 			children = (
 				293857EF266BE0A500E8DB65 /* NotificationTableCell.swift */,
 				293857FB266C7B5A00E8DB65 /* NotificationFriendTableCell.swift */,
+				29385BEA267A4F5A00E8DB65 /* NotificationFriendAcceptTableCell.swift */,
 				B07CD19B2666751F0031B106 /* NotificationViewController.swift */,
 				B07CD19F266675530031B106 /* NotificationViewModel.swift */,
 			);
@@ -896,6 +915,15 @@
 				B0B035EC2622B33800D65204 /* SettingConstants.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		B0B1D7AE267CB0E30058CEBB /* EditBucket */ = {
+			isa = PBXGroup;
+			children = (
+				B0B1D7B7267CB0F20058CEBB /* EditBucketViewController.swift */,
+				B0B1D7B9267CB1080058CEBB /* EditBucketViewModel.swift */,
+			);
+			path = EditBucket;
 			sourceTree = "<group>";
 		};
 		B0D021702602195B00F25329 /* MultiLevelVC */ = {
@@ -1385,6 +1413,7 @@
 				EE77F556265AA80E002C4782 /* FriendListCollectionCell.swift in Sources */,
 				B082F2CE26594F3900A7AB6B /* CreateAddCell.swift in Sources */,
 				B06B5EEF25ECCEE10045A491 /* SubTwoViewController.swift in Sources */,
+				29385BEB267A4F5A00E8DB65 /* NotificationFriendAcceptTableCell.swift in Sources */,
 				B08CEB37266212BF00FF77BD /* AppConfiguration.swift in Sources */,
 				B082F2D626595EB500A7AB6B /* AlignedCollectionViewFlowLayout.swift in Sources */,
 				B08CEB3E2662163E00FF77BD /* StartDIContainer.swift in Sources */,
@@ -1395,6 +1424,7 @@
 				293857E1266BA66500E8DB65 /* AlarmAPIRequest.swift in Sources */,
 				B0635AC52603897600046E88 /* HomeViewController.swift in Sources */,
 				EE4C015A26587912002C5018 /* BuokmarkEmptyCollectionCell.swift in Sources */,
+				B0B1D7BA267CB1080058CEBB /* EditBucketViewModel.swift in Sources */,
 				B08CEB882663930A00FF77BD /* WorkThruViewController.swift in Sources */,
 				B075226D25ED089F0016DC3A /* AuthTokenModel.swift in Sources */,
 				EE4C017326589743002C5018 /* EditProfileViewModel.swift in Sources */,
@@ -1403,6 +1433,7 @@
 				B08CEB8C2663934E00FF77BD /* WorkThruPageContentViewController.swift in Sources */,
 				B0D0217D2602199600F25329 /* JoinViewController.swift in Sources */,
 				B041747625E2366E00D990A2 /* MultiLevelViewController.swift in Sources */,
+				B0B1D7B8267CB0F20058CEBB /* EditBucketViewController.swift in Sources */,
 				B023B156266A130D0060F625 /* ImageUploadAPIRequest.swift in Sources */,
 				EEA213CB2625D59900E3AEA1 /* LoginViewController+UI.swift in Sources */,
 				B082F2D226595ABD00A7AB6B /* CreateTagCell.swift in Sources */,
@@ -1434,6 +1465,7 @@
 				B07AD1392667C3A6000CCDAC /* EmailAuthAPIRequest.swift in Sources */,
 				B07CD19C2666751F0031B106 /* NotificationViewController.swift in Sources */,
 				B08CEB3C2662162A00FF77BD /* StartCoordinator.swift in Sources */,
+				525A226E2679FD75008C1F2E /* FriendAPIRequest.swift in Sources */,
 				B00FD523266B6FF400A48B72 /* WithDrawalViewModel.swift in Sources */,
 				EE49406726475A5D00CB0B71 /* ForgetViewController.swift in Sources */,
 				29CA50B5265AEE7B00533ED6 /* UserAPIRequest.swift in Sources */,

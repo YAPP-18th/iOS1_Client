@@ -207,13 +207,15 @@ public struct BucketListAPIRequest {
 		bucketArray["content"] = bucket.content
 		bucketArray["endDate"] = bucket.endDate
 		bucketArray["imageList"] = bucket.imageList
-		bucketArray["startDate"] = bucket.startDate
-		bucketArray["state"] = bucket.bucketState
+		bucketArray["bucketState"] = bucket.bucketState
 		bucketArray["tagList"] = bucket.tagList
 		BaseAPIRequest.requestJSONResponse(requestType: BucketRequestType.bucketsEdit(bucketId: bucketId, bucket: bucketArray)).then { responseData in
 			do {
 				if let dictData = responseData as? NSDictionary {
 					let jsonData = try JSONSerialization.data(withJSONObject: dictData, options: .prettyPrinted)
+                    DebugLog("responseData : \(dictData)")
+                    DebugLog("Json Data : \n\(String(data: jsonData, encoding: .utf8) ?? "nil")")
+                    
 					let getData = try JSONDecoder().decode(BaseServerModel.self, from: jsonData)
 					if getData.status < 300 {
 						responseHandler(.success(true))

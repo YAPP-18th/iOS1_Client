@@ -390,7 +390,7 @@ public class DetailViewController: HeroBaseViewController {
         
         menuButton.imageInset = 8
         menuButton.heroImage = UIImage(heroSharedNamed: "ic_menu_ver")
-        menuButton.addTarget(self, action: #selector(onClickMenuButton(_:)), for: .touchUpInside)
+        menuButton.addTarget(self, action: #selector(onClickMoreButton(_:)), for: .touchUpInside)
         
         scrollView.showsVerticalScrollIndicator = false
         
@@ -450,6 +450,24 @@ public class DetailViewController: HeroBaseViewController {
     }
     
     @objc
+    private func onClickMoreButton(_ sender: Any?) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let modifyAction = UIAlertAction(title: "수정하기", style: .default, handler: { _ in
+            let vc = EditBucketViewController()
+            if let detailItem = self.viewModel?.bucketDetailItem.value {
+                let viewModel = EditBucketViewModel(detailModel: detailItem)
+                vc.viewModel = viewModel
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        })
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(modifyAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc
     private func onClickOptionButton(_ sender: Any?) {
         if viewModel?.state.value == .done || viewModel?.state.value == .failure {
             // Add Bookmark
@@ -458,23 +476,6 @@ public class DetailViewController: HeroBaseViewController {
             // Pin
             viewModel?.setPinBucket()
         }
-    }
-    
-    @objc
-    func onClickMenuButton(_ sender: UIButton) {
-        startActionSheet()
-    }
-    
-    private func startActionSheet() {
-        let action = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let editAction = UIAlertAction(title: "Hero_Edit_Bucket_Detail".localized, style: .default, handler: { _ in
-            // todo - 수정하기 화면 띄우기
-        })
-        let cancelAction = UIAlertAction(title: "Hero_Common_String_Cancel".localized, style: .cancel, handler: nil)
-        
-        action.addAction(editAction)
-        action.addAction(cancelAction)
-        self.present(action, animated: true, completion: nil)
     }
 }
 

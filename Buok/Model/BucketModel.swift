@@ -9,16 +9,16 @@ import Foundation
 
 // MARK: Bucket Detail 관련 모델들
 public struct BucketHistoryModel: Codable {
-    var content: String
-    var modifiedDate: String
+    public var content: String
+    public var modifiedDate: String
 }
 
 public struct TagModel: Codable {
-    var tagName: String
+    public var tagName: String
 }
 
 public struct ImageURLModel: Codable {
-    var imageUrl: String
+    public var imageUrl: String
 }
 
 // MARK: Bucket Detail 실제 사용하는 결과 모델
