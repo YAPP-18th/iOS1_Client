@@ -115,6 +115,7 @@ extension EditProfileViewController: UITextFieldDelegate, UITextViewDelegate {
             self.nicknameTextField.text = text
         }
         self.nicknameCountLabel.text = "\(text.count)/12"
+        self.viewModel.nickname.value = textField.text ?? ""
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
@@ -133,6 +134,7 @@ extension EditProfileViewController: UITextFieldDelegate, UITextViewDelegate {
             let beforeEnd = textView.text.index(before: textView.text.endIndex)
             textView.text = String(textView.text[start..<beforeEnd])
         }
+        self.viewModel.introduce.value = textView.text
     }
 }
 
