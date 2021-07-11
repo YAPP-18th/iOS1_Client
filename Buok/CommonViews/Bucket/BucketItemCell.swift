@@ -232,28 +232,24 @@ final class BucketItemCell: UICollectionViewCell {
     }
     
     private func setDateToLabel(state: BucketState) {
-        if state == .failure || state == .done {
-            dateLabel.text = bucket?.endDate.convertToDate().convertToSmallString()
-        } else {
-			if let endDate = bucket?.endDate.convertToDate() {
-                if Calendar.current.dateComponents([.day], from: endDate, to: Date()).day == 0 {
-                    dateLabel.text = "D - Day"
-                } else {
-                    dateLabel.text = "D - \(Calendar.current.dateComponents([.day], from: Date(), to: endDate).day ?? 0)"
-                }
-            }
+        var endDate: String? = ""
+        switch cellType {
+        case .normal:
+            endDate = bucket?.endDate
+        case .search:
+            endDate = bucketSearch?.endDate
+        case .friendProfile:
+            endDate = bucketFriendProfile?.endDate
         }
-    }
-    
-    private func setDateToLabelInSearch(state: BucketState) {
+        
         if state == .failure || state == .done {
-            dateLabel.text = bucketSearch?.endDate.convertToDate().convertToSmallString()
+            dateLabel.text = endDate?.convertToDate().convertToSmallString()
         } else {
-            if let endDate = bucketSearch?.endDate.convertToDate() {
-                if Calendar.current.dateComponents([.day], from: endDate, to: Date()).day == 0 {
+            if let convertEndDate = endDate?.convertToDate() {
+                if Calendar.current.dateComponents([.day], from: convertEndDate, to: Date()).day == 0 {
                     dateLabel.text = "D - Day"
                 } else {
-                    dateLabel.text = "D - \(Calendar.current.dateComponents([.day], from: Date(), to: endDate).day ?? 0)"
+                    dateLabel.text = "D - \(Calendar.current.dateComponents([.day], from: Date(), to: convertEndDate).day ?? 0)"
                 }
             }
         }

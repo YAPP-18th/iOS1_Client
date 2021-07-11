@@ -293,7 +293,6 @@ extension SearchViewController: FriendListCollectionCellDelegate {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 		if let keyword = searchBar.text, let currentType = viewModel?.currentSearchType.value {
-			print(currentType)
 			if let viewModel = viewModel {
 				if viewModel.isSearchedKeyword == false || keyword == "" {
 					viewModel.fetchSearchResult(type: .myBucket, keyword: keyword)
